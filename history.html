@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Donation Bangladesh</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body class="bg-white">
+  
+    <main>
+      
+        <header class="sticky top-0 z-50">
+            <div  class="  bg-gray-100 navbar bg-base-100 p-5">
+                <div class="navbar-start">
+                  <a id="btn-blog" class=" btn bg-lime-400  text-xl text-black border-none hover:bg-lime-400">Blog</a>
+                </div>
+                <div class="flex  gap-5 navbar-center  lg:flex ">
+                    <div>
+                        <img width="30px" src="./assets/logo.png" alt="">
+                    </div>
+                    <div>
+                        <h1 class="text-black text-xl">Donation Bangladesh</h1>
+                    </div>
+                </div>
+                <div class="navbar-end flex gap-1">
+                  <div>
+                    <img src="./assets/coin.png" alt="">
+                    
+                  </div>
+                  <div id="Total-balance" class="stat-value text-xl text-black">5500</div>
+                  <div> <h1 class="text-black">BTD</h1></div>
+                </div>
+              </div>
+        </header>
+        <!---banner section-->
+        <section id="navbar" class="flex items-center justify-center p-5 gap-5 bg-white sticky top-20 z-50 ">
+            <div class="">
+                <button id="donate-btn" class="btn  bg-lime-400 border-none hover:bg-white text-black border-black   ">Donate</button>
+                <button id="btn-history" class="btn btn-outline  bg-gray-100 hover:bg-lime-400 text-black border-black">History</button>
+            </div>
+        </section>
+        <section>
+            <div  class="container mx-auto w-full" ></div>
+                <h1 class="text-2xl font-bold mb-4 text-center">Transaction History</h1>
+                <table class="min-w-full bg-white">
+                    <thead>
+                        <tr>
+                            <th class="py-2 px-4 border">Type</th>
+                            <th class="py-2 px-4 border">Amount</th>
+                            <th class="py-2 px-4 border">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody  id="transaction-history">
+                        <!-- Transaction data will be injected here by JavaScript -->
+                    </tbody>
+                </table>
+            
+            </div>
+        </section>
+
+     
+        
+    </main>
+    <script>
+        // Retrieve history from localStorage
+        const history = JSON.parse(localStorage.getItem('history')) || [];
+
+        // Get the table body element
+        const tableBody = document.getElementById('transactionHistoryTable');
+
+        // Populate the table with the transaction history
+        history.forEach(transaction => {
+            const row = document.createElement('tr');
+            
+            row.innerHTML = `
+                <td class="py-2 px-4 border">${transaction.type}</td>
+                <td class="py-2 px-4 border">${transaction.amount}</td>
+                <td class="py-2 px-4 border">${transaction.date}</td>
+            `;
+            
+            tableBody.appendChild(row);
+        });
+    </script>
+    
+   <script src="./js/scroll.js"></script>
+    <script src="./js/admoney.js"></script>
+    <script src="./js/featuress.js"></script>
+     
+
+
+    
+</body>
+</html>
